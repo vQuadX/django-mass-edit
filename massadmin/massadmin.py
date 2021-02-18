@@ -61,6 +61,8 @@ from django.shortcuts import render
 from django.forms.formsets import all_valid
 from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
 
+from django_object_actions import DjangoObjectAction
+
 from . import settings
 
 
@@ -132,6 +134,8 @@ class MassAdmin(admin.ModelAdmin):
         for cl in self.admin_obj.__class__.mro():
             if cl is admin.ModelAdmin:
                 break
+            if cl is DjangoObjectAction:
+                continue
             for k, v in cl.__dict__.items():
                 if not k in items:
                     items[k] = v
