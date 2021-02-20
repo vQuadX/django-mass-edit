@@ -386,4 +386,7 @@ class MassAdmin(admin.ModelAdmin):
 
 
 class MassEditMixin:
-    actions = [mass_change_selected, ]
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        actions['massedit'] = (mass_change_selected, 'massedit', 'Массовое редактирование')
+        return actions
