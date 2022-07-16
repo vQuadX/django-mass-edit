@@ -1,4 +1,4 @@
 django
 six
 coveralls
-django-object-actions==0.10.0
+django-object-actions==4.0.0
